@@ -1,0 +1,48 @@
+logging:
+  file:
+    name: log/calendrier_gif_log
+  level:
+    org:
+      springframework: INFO
+    root: INFO
+  pattern:
+    console: '%d %p %c{1.} [%t] %m%n'
+management:
+  endpoint:
+    info:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: beans
+server:
+  error:
+    path: /erreur
+  port: 8280
+spring:
+  data:
+    rest:
+      detection-strategy: annotated
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:calendrier_gif
+  h2:
+    console:
+      enabled: true
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  servlet:
+    multipart:
+      max-file-size: 16MB
+      max-request-size: 20MB
